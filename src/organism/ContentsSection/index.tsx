@@ -159,7 +159,7 @@ const ContentsSection = () => {
     setModalData(item);
     ChangeModalState();
   };
-  console.log(open);
+
   return (
     <Frame title={"Top3 Items"} type="bold">
       {open && <DetailModal data={ModalData} closeModal={ChangeModalState} />}

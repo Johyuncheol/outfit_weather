@@ -11,7 +11,7 @@ const ItemInfo: React.FC<ItemInfoProps> = ({ imgSrc, alt, detail }) => {
   return (
     <div className="grid grid-cols-2">
       <div className="flex justify-center">
-        <ImageCircle type={"big"} imgSrc={imgSrc} alt={alt} />
+        <ImageCircle type={"responsive"} imgSrc={imgSrc} alt={alt} />
       </div>
       <pre>{detail}</pre>
     </div>

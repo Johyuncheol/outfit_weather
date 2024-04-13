@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AddLocalStorage, GetLocalStorage } from "@/lib/HandleLocalStorage";
+import { AddLocalStorage, GetLocalStorage } from "@/util/HandleLocalStorage";
 
 interface addresseState {
   address: string | null;

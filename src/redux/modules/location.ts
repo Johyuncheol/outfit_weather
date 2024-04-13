@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AddLocalStorage, GetLocalStorage } from "@/lib/HandleLocalStorage";
-import { dfs_xy_conv } from "@/lib/ChageToGridMap";
+import { AddLocalStorage, GetLocalStorage } from "@/util/HandleLocalStorage";
+import { dfs_xy_conv } from "@/util/ChageToGridMap";
 
 interface locationState {
   x: number | null;

@@ -1,4 +1,4 @@
-import Button from "@/atoms/Button";
+import { SubmitButton } from "@/atoms/Button";
 import React from "react";
 
 interface ModalFrameProps {
@@ -17,9 +17,7 @@ const ModalFrame: React.FC<ModalFrameProps> = ({
       <div className="bg-white p-8 rounded shadow-lg overflow-auto h-[80%] w-[80%] ">
         <div className=" flex justify-between items-center">
           <h2 className=" text-xl font-bold ">{title}</h2>
-          <Button type={"submit"} onClick={() => closeModal()}>
-            닫기
-          </Button>
+          <SubmitButton onClick={() => closeModal()}>닫기</SubmitButton>
         </div>
         {children}
       </div>

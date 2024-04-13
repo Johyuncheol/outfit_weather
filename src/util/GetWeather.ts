@@ -1,11 +1,11 @@
-import { GetToday } from "./GetToday";
+import { GetYesterday } from "./GetYesterday";
 import { GetBaseTime } from "./GetBaseTime";
 
 export const GetWeatherInfo = ({ data }: any) => {
-  const Today = GetToday();
-  const TodayWeather = data[Today];
-  const TomorrowWeather = data[Today + 1];
-  const TwoDaysAfterWeather = data[Today + 2];
+  const Yesterday = GetYesterday();
+  const TodayWeather = data[Yesterday + 1];
+  const TomorrowWeather = data[Yesterday + 2];
+  const TwoDaysAfterWeather = data[Yesterday + 3];
 
   const baseTime = GetBaseTime();
   const nowWeather = TodayWeather.filter(

@@ -5,51 +5,16 @@ import { useSelector } from "react-redux";
 
 const WeatherInfo = ({ data }: any) => {
   const address = useSelector((state: RootState) => state.addressReducer);
-  const [weather, setWeather] = useState({
-    POP: 0,
-    PTY: 0,
-    PCP: 0,
-    SKY: 0,
-    TMP: 0,
-    TMN: 0,
-    TMX: 0,
-    WSD: 0,
-    REH: 0,
-  });
+  const [weather, setWeather] = useState<Record<string, number>>({});
 
   useEffect(() => {
+    const newWeather: Record<string, number> = {};
+
     data.forEach((item: any) => {
-      switch (item.category) {
-        case "POP":
-          setWeather((prevState) => ({ ...prevState, POP: item.fcstValue }));
-          break;
-        case "PTY":
-          setWeather((prevState) => ({ ...prevState, PTY: item.fcstValue }));
-          break;
-        case "PCP":
-          setWeather((prevState) => ({ ...prevState, PCP: item.fcstValue }));
-          break;
-        case "SKY":
-          setWeather((prevState) => ({ ...prevState, SKY: item.fcstValue }));
-          break;
-        case "TMP":
-          setWeather((prevState) => ({ ...prevState, TMP: item.fcstValue }));
-          break;
-        case "TMN":
-          setWeather((prevState) => ({ ...prevState, TMN: item.fcstValue }));
-          break;
-        case "TMX":
-          setWeather((prevState) => ({ ...prevState, TMX: item.fcstValue }));
-          break;
-        case "WSD":
-          setWeather((prevState) => ({ ...prevState, WSD: item.fcstValue }));
-        case "REH":
-          setWeather((prevState) => ({ ...prevState, REH: item.fcstValue }));
-          break;
-        default:
-          break;
-      }
+      newWeather[item.category] = item.fcstValue;
     });
+
+    setWeather(newWeather);
   }, [data]);
 
   return (

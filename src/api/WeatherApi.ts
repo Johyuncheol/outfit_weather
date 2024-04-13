@@ -1,5 +1,5 @@
 interface getWeatherAPIProps {
-  Today: number;
+  yesterday: number;
   location: {
     x: number | null;
     y: number | null;
@@ -7,12 +7,12 @@ interface getWeatherAPIProps {
 }
 
 export const getWeatherAPI = async ({
-  Today,
+  yesterday,
   location,
 }: getWeatherAPIProps) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_WEATHER_API_URL}?serviceKey=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&numOfRows=870&pageNo=1&dataType=JSON&base_date=${Today}&base_time=0200&nx=${location.x}&ny=${location.y}`
+      `${process.env.NEXT_PUBLIC_WEATHER_API_URL}?serviceKey=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&numOfRows=870&pageNo=1&dataType=JSON&base_date=${yesterday}&base_time=2300&nx=${location.x}&ny=${location.y}`
     );
 
     return response.json();

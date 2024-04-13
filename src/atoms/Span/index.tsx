@@ -1,7 +1,7 @@
 import React from "react";
 
 interface SpanProps {
-  type: "title" | "subTitle" | "subTitle2" | "detail" | "large";
+  type: "title" | "subTitle" | "subTitle2" | "subTitle3" | "detail" | "large";
   children: React.ReactNode;
 }
 
@@ -20,6 +20,9 @@ const Span: React.FC<SpanProps> = ({ children, type }) => {
       break;
     case "subTitle2":
       className = " font-semibold text-2xl";
+      break;
+    case "subTitle3":
+      className = " font-semibold text-lg";
       break;
     case "detail":
       className = " font-normal text-base";

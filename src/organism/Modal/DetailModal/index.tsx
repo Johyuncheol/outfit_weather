@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Button from "@/atoms/Button";
+import { SubmitButton } from "@/atoms/Button";
 import ModalFrame from "@/molecules/ModalFrame";
 
 interface DetailModalProps {
@@ -29,9 +29,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ data, closeModal }) => {
       ))}
 
       <div className="flex justify-center">
-        <Button type={"submit"} onClick={() => closeModal()}>
-          선택하기
-        </Button>
+        <SubmitButton onClick={() => closeModal()}>선택하기</SubmitButton>
       </div>
     </ModalFrame>
   );

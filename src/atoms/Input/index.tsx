@@ -6,8 +6,12 @@ interface InputProps {
   value?: string;
   type: string;
   required?: boolean;
-  onChange?: ({ value, id }: { value: string; id: string }) => void;
-  onBlur?: ({ value, id }: { value: string; id: string }) => void;
+  onChange?: ({
+    event,
+  }: {
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => void;
+  onBlur?: ({ event }: { event: React.ChangeEvent<HTMLInputElement> }) => void;
 }
 
 const Input = ({
@@ -21,14 +25,14 @@ const Input = ({
 }: InputProps) => {
   const [text, setText] = useState(value);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
     setText(value);
-    onChange({ value, id });
+    onChange({ event });
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    onBlur({ value: e.target.value, id });
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    onBlur({ event });
   };
 
   return (

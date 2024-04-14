@@ -13,9 +13,7 @@ const Main = () => {
       <WeatherSection />
       <ItemsCarousel
         title={"추천아이템"}
-        onItemClick={function (title: string, id: string): void {
-          throw new Error("Function not implemented.");
-        }}
+        onItemClick={(title: string, id: string) => {}}
       />
       <ContentsSection />
     </Provider>

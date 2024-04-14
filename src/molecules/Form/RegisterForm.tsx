@@ -20,39 +20,45 @@ const RegisterForm: React.FC = () => {
   });
 
   // input의 value를 변경하는 함수
-  const handleInputChange = ({ value, id }: { value: string; id: string }) => {
+  const handleInputChange = ({
+    event,
+  }: {
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => {
     setRegisterInput((prev) => {
-      return { ...prev, [id]: value };
+      return { ...prev, [event.target.id]: event.target.value };
     });
   };
 
   // 유효성 검사 함수
-  const handleValidate = ({ value, id }: { value: string; id: string }) => {
+  const handleValidate = ({
+    event,
+  }: {
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => {
     // 비밀번호 확인 유효성검사 예외처리
-    if (id === "passwordCheck") {
-      if (value !== registerInput.password) {
+    if (event.target.id === "passwordCheck") {
+      if (event.target.value !== registerInput.password) {
         const errorMessage = "비밀번호가 일치하지 않습니다";
-        setErrors((prev) => ({ ...prev, [id]: errorMessage }));
+        setErrors((prev) => ({ ...prev, [event.target.id]: errorMessage }));
       } else {
         setErrors((prev) => {
-          const { [id]: _, ...rest } = prev;
+          const { [event.target.id]: _, ...rest } = prev;
           return { ...rest };
         });
       }
     } else {
-      setErrors((prev) => ({ ...InputValidate(prev, id, value) }));
+      setErrors((prev) => ({ ...InputValidate(prev, event.target.id, event.target.value) }));
     }
   };
 
   const handleChangeAndValidate = ({
-    value,
-    id,
+    event,
   }: {
-    value: string;
-    id: string;
+    event: React.ChangeEvent<HTMLInputElement>;
   }) => {
-    handleInputChange({ value, id });
-    handleValidate({ value, id });
+    handleInputChange({ event });
+    handleValidate({ event });
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {

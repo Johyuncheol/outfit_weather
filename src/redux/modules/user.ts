@@ -6,12 +6,12 @@ import {
 } from "@/util/HandleSessionStorage";
 
 interface userState {
-  nickname: string;
+  nickname: string | null;
 }
 
 const user = GetSessionStorage("nickname");
 console.log(user);
-const initialState: userState = { nickname: user } || { nickname: null };
+const initialState: userState = { nickname: null };
 const userSlice = createSlice({
   name: "userSlice",
   initialState,

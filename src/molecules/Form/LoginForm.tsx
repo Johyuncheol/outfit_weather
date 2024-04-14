@@ -15,8 +15,14 @@ const LoginForm: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   // 유효성 검사 함수
-  const handleValidate = ({ value, id }: { value: string; id: string }) => {
-    setErrors((prev) => ({ ...InputValidate(prev, id, value) }));
+  const handleValidate = ({
+    event,
+  }: {
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => {
+    setErrors((prev) => ({
+      ...InputValidate(prev, event.target.id, event.target.value),
+    }));
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {

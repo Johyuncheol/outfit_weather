@@ -8,8 +8,12 @@ interface InputFrameProps {
   type: string;
   errorMessage?: string;
   value?: string;
-  onChange?: ({ value, id }: { value: string; id: string }) => void;
-  onBlur?: ({ value, id }: { value: string; id: string }) => void;
+  onChange?: ({
+    event,
+  }: {
+    event: React.ChangeEvent<HTMLInputElement>;
+  }) => void;
+  onBlur?: ({ event }: { event: React.ChangeEvent<HTMLInputElement> }) => void;
   inputType?: "input" | "textarea";
   required?: boolean;
 }

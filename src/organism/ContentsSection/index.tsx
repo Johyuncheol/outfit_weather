@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import ItemInfo from "@/molecules/ItemInfo";
 import Carousel from "@/util/Carousel";
 import ImageGrid from "@/molecules/ImageGrid";
 import useModal from "@/hook/useModal";
 import DetailModal from "@/organism/Modal/DetailModal";
-import { getRecommendAPI } from "@/api/ClothesAPI";
 
 interface Item {
   mainItem: {
@@ -44,7 +43,7 @@ interface Item {
   }[];
 }
 
-const ContentsSection = () => {
+const ContentsSection = ({ data }: { data: Item[] }) => {
   const { open, ChangeModalState } = useModal();
   const [ModalData, setModalData] = useState<any>();
   const HandleModal = (item: any) => {
@@ -52,32 +51,11 @@ const ContentsSection = () => {
     ChangeModalState();
   };
 
-  const [recommend, setRecommend] = useState<Item[]>([]);
-
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        const res = await getRecommendAPI(Number(21));
-        if (res) {
-          setRecommend(res);
-        }
-      } catch (error: any) {
-        if (error.message === "Unauthorized") {
-          // router.push("/");
-        } else {
-          console.error("Error fetching data:", error);
-        }
-      }
-    };
-
-    fetch();
-  }, []);
-
   return (
     <Frame title={"추천 아이템 스타일"} type="bold">
       {open && <DetailModal data={ModalData} closeModal={ChangeModalState} />}
-      {recommend &&
-        recommend.map((data, index) => {
+      {data &&
+        data.map((data, index) => {
           return (
             <div key={index} id={`recommend${data.mainItem._id}`}>
               <Frame title={`${data.mainItem.name} 코디`}>

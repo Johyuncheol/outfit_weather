@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export { SubmitButton, LinkTextButton, SquareButton, IconButton };
+export { SubmitButton, LinkTextButton, SquareButton, IconButton, PageButton };
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -63,3 +63,15 @@ const IconButton: React.FC<IconButtonProps> = ({
   );
 };
 
+const PageButton: React.FC<{
+  pageNumber: number;
+  onClick: () => void;
+  state: boolean;
+}> = ({ pageNumber, onClick, state }) => (
+  <button
+    onClick={onClick}
+    className={` ${state ? "bg-blue-700" : "bg-blue-500"} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
+  >
+    {pageNumber}
+  </button>
+);

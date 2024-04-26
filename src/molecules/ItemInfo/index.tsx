@@ -1,4 +1,4 @@
-import ImageCircle from "@/atoms/ImageCircle";
+import FigureImage from "@/atoms/FigureImage";
 import React from "react";
 
 interface ItemInfoProps {
@@ -11,7 +11,7 @@ const ItemInfo: React.FC<ItemInfoProps> = ({ imgSrc, alt, detail }) => {
   return (
     <div className="grid grid-cols-2">
       <div className="flex justify-center">
-        <ImageCircle type={"responsive"} imgSrc={imgSrc} alt={alt} />
+        <FigureImage type={"circle"} imgSrc={imgSrc} alt={alt} />
       </div>
       <pre>{detail}</pre>
     </div>

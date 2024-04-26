@@ -1,5 +1,5 @@
 import React from "react";
-import InputFrame from "../InputFrame";
+import InputFrame from "../Frame/InputFrame";
 import Input from "@/atoms/Input";
 
 interface InputFrameProps {

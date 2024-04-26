@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   AddSessionStorage,
-  GetSessionStorage,
   RemoveSessionStorage,
 } from "@/util/HandleSessionStorage";
 
@@ -9,9 +8,8 @@ interface userState {
   nickname: string | null;
 }
 
-const user = GetSessionStorage("nickname");
-console.log(user);
 const initialState: userState = { nickname: null };
+
 const userSlice = createSlice({
   name: "userSlice",
   initialState,

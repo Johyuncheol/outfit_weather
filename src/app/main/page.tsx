@@ -1,22 +1,14 @@
-"use client";
-import WeatherSection from "@/organism/WeatherSection";
-import ItemsCarousel from "@/organism/ItemsCarousel";
-import ContentsSection from "@/organism/ContentsSection";
-import { Provider } from "react-redux";
-import store from "../../redux/const";
-import Header from "@/organism/Header";
+import WeatherTemplate from "@/Template/Common/WeatherTemplate";
+import Header from "@/Template/Layout/Header";
+import MainContentTemplate from "@/Template/Main/MainContentTemplate";
 
 const Main = () => {
   return (
-    <Provider store={store}>
+    <>
       <Header />
-      <WeatherSection />
-      <ItemsCarousel
-        title={"추천아이템"}
-        onItemClick={(title: string, id: string) => {}}
-      />
-      <ContentsSection />
-    </Provider>
+      <WeatherTemplate />
+      <MainContentTemplate />
+    </>
   );
 };
 

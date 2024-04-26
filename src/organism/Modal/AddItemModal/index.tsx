@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
-import ModalFrame from "@/molecules/ModalFrame";
+import React from "react";
+import ModalFrame from "@/molecules/Frame/ModalFrame";
 import useModal from "@/hook/useModal";
-import ItemsCarousel from "@/organism/ItemsCarousel";
-import { SubmitButton } from "@/atoms/Button";
-import AddItemForm from "@/molecules/Form/AddItemForm";
+import AddItemForm from "@/organism/Form/AddItemForm";
 
 interface SelectItemModalProps {
   children: React.ReactNode;
 }
 const AddItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
   const { ChangeModalState, open } = useModal();
-
-  let selectedItems: Record<string, string> = {};
-
-  const handleItemClick = (cateogry: string, id: string) => {
-    selectedItems = { ...selectedItems, [cateogry]: id };
-  };
 
   return (
     <>
@@ -26,7 +18,7 @@ const AddItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
           closeModal={ChangeModalState}
           title={"클릭해서 아이템 선택"}
         >
-          <AddItemForm onSubmit={()=>{}} />
+          <AddItemForm />
         </ModalFrame>
       )}
     </>

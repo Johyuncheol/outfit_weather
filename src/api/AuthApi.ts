@@ -6,15 +6,28 @@ interface LoginProps {
 }
 
 export const loginAPI = async (data: LoginProps) => {
-  const response = await customFetch(`auth/login`, "POST", data);
-  return response.nickname;
+  const endpoint = "auth/login";
+  const method = "POST";
+
+  const response = await customFetch({ endpoint, method, data });
+  return response.username;
 };
 
 interface RegisterProps {
   id: string;
   password: string;
-  nickname: string;
+  username: string;
 }
 export const RegisterAPI = async (data: RegisterProps) => {
-  await customFetch(`auth/register`, "POST", data);
+  const endpoint = "auth/register";
+  const method = "POST";
+  await customFetch({ endpoint, method, data });
+};
+
+export const isloginAPI = async () => {
+  const endpoint = "user/islogin";
+  const method = "GET";
+
+  const response = await customFetch({ endpoint, method });
+  return response;
 };

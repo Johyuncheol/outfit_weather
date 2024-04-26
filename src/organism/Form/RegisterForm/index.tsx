@@ -8,14 +8,14 @@ const RegisterForm: React.FC = () => {
   const [registerInput, setRegisterInput] = useState({
     id: "",
     password: "",
-    nickname: "",
+    username: "",
     passwordCheck: "",
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({
     id: "id 입력하세요. (최소 5자)",
     password: "password 입력하세요. (최소 5자)",
-    nickname: "nickname 입력하세요. (최소 5자)",
+    username: "nickname 입력하세요. (최소 5자)",
     passwordCheck: "",
   });
 
@@ -64,8 +64,6 @@ const RegisterForm: React.FC = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(errors);
-    console.log(registerInput);
     if (
       Object.keys(errors).length === 0 &&
       Object.values(registerInput).some((value) => value !== "")
@@ -115,8 +113,8 @@ const RegisterForm: React.FC = () => {
         id={"nickname"}
         label={"닉네임"}
         type={"text"}
-        errorMessage={errors.nickname}
-        value={registerInput.nickname}
+        errorMessage={errors.username}
+        value={registerInput.username}
         required={true}
         onChange={handleChangeAndValidate}
       />

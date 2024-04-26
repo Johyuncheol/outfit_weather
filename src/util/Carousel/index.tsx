@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 
 interface CarouselProps {
@@ -20,7 +20,7 @@ const Carousel: React.FC<CarouselProps> = ({ children, slideData }) => {
     <div className="relative overflow-hidden">
       <div className="flex">
         <div
-          className="flex transition ease gap-5"
+          className="flex transition ease "
           style={{
             transform: `translateX(-${currentSlide * (100 / slideData.length)}%)`,
           }}

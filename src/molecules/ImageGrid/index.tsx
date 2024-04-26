@@ -1,9 +1,21 @@
 import Image from "next/image";
 
 interface Item {
-  [key: string]: {
+  outer: {
     imgSrc: string;
-    alt: string;
+    name: string;
+  };
+  top: {
+    imgSrc: string;
+    name: string;
+  };
+  inner: {
+    imgSrc: string;
+    name: string;
+  };
+  bottom: {
+    imgSrc: string;
+    name: string;
   };
 }
 
@@ -12,24 +24,31 @@ interface ImageGridProps {
 }
 
 const ImageGrid: React.FC<ImageGridProps> = ({ data }) => {
-  let row =
-    Object.keys(data).length < 4
-      ? `grid grid-cols-${Object.keys(data).length}`
-      : `grid grid-cols-3`;
-
   return (
-    <div
-      className={`grid ${row} w-full h-full flex justify-center items-center border border-1`}
-    >
-      {Object.keys(data).map((key, innerIndex) => (
-        <Image
-          key={innerIndex}
-          src={data[key].imgSrc}
-          alt={data[key].alt}
-          width={100}
-          height={100}
-        />
-      ))}
+    <div className="grid grid-cols-3 gap-[1px] min-w-[350px] p-4">
+      <div className="bg-gray-200 h-[125px] relative"></div>
+      <div className="bg-gray-200 h-[125px] relative">모자</div>
+      <div className="bg-gray-200 h-[125px] relative">목도리</div>
+
+      <div className="bg-gray-200 h-[125px] relative">
+        {data.outer ? <Image src={data.outer.imgSrc} alt="" fill /> : "아우터"}
+      </div>
+      <div className="bg-gray-200 h-[125px] relative">
+        {data.top ? <Image src={data.top.imgSrc} alt="" fill /> : "상의"}
+      </div>
+      <div className="bg-gray-200 h-[125px] relative">장갑</div>
+
+      <div className="bg-gray-200 h-[125px] relative"></div>
+      <div className="bg-gray-200 h-[125px] relative">
+        {data.inner ? <Image src={data.inner.imgSrc} alt="" fill /> : "이너"}
+      </div>
+      <div className="bg-gray-200 h-[125px] relative">가방</div>
+
+      <div className="bg-gray-200 h-[125px] relative"></div>
+      <div className="bg-gray-200 h-[125px] relative">
+        {data.bottom ? <Image src={data.bottom.imgSrc} alt="" fill /> : "하의"}
+      </div>
+      <div className="bg-gray-200 h-[125px] relative">신발</div>
     </div>
   );
 };

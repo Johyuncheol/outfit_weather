@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import addressReducer from "./modules/adress";
 import locationReducer from "./modules/location";
-import userReducer from "./modules/user"
+import userReducer from "./modules/user";
+import tempReducer from "./modules/weather";
 
 const store = configureStore({
   reducer: {
     addressReducer,
     locationReducer,
-    userReducer
+    userReducer,
+    tempReducer,
   },
 });
 

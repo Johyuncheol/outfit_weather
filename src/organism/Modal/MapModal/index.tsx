@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import ModalFrame from "@/molecules/ModalFrame";
+import ModalFrame from "@/molecules/Frame/ModalFrame";
 import { setAddress } from "@/redux/modules/adress";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "@/redux/modules/location";
 import { RootState } from "@/redux/const";
 import useModal from "@/hook/useModal";
-import IconButton from "@/atoms/IconButton";
 
 interface MapModalProps {
   children: React.ReactNode;

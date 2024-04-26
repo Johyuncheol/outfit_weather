@@ -9,15 +9,25 @@ export const GetWeatherInfo = ({ data }: any) => {
 
   const baseTime = GetBaseTime();
   const nowWeather = TodayWeather.filter(
-    (item: { category: string; fcstTime: string }) => {
+    (item: { fcstDate: string; category: string; fcstTime: string }) => {
+      const currentDate = new Date();
+      currentDate.setDate(currentDate.getDate()); // 현재 날짜에서 하루를 빼서 어제 날짜를 가져옴
+
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+      const day = String(currentDate.getDate()).padStart(2, "0");
+
+      const formattedDateNumber = `${year}${month}${day}`;
+
       return (
         item.fcstTime == baseTime ||
-        item.category === "TMN" ||
-        item.category === "TMX"
+        (item.fcstDate === formattedDateNumber && item.category === "TMN") ||
+        (item.fcstDate === formattedDateNumber && item.category === "TMX")
       );
     }
   );
 
+  console.log(nowWeather)
   return {
     TodayWeather,
     TomorrowWeather,

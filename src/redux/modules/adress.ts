@@ -6,7 +6,7 @@ interface addresseState {
 }
 
 const initialState: addresseState = {
-  address: GetLocalStorage("address") || "",
+  address: null,
 };
 
 const addressSlice = createSlice({

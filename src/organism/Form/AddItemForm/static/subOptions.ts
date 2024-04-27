@@ -38,6 +38,7 @@ export const subOptions: CategoryOptionsMap = {
   top: {
     option: [
       { value: "", label: "카테고리를 선택하세요" },
+      { value: "니트", label: "니트" },
       { value: "스웨트셔츠", label: "스웨트셔츠" },
       { value: "후디", label: "후디" },
       { value: "셔츠", label: "셔츠" },

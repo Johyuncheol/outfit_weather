@@ -103,32 +103,27 @@ export default CategoryItemView;
 
 export const exData = [
   {
-    imgSrc:
-      "https://weather-outfit-image.s3.amazonaws.com/6619043c4ad9ca1d71dd1528/바지.png",
+    imgSrc: "/assets/image/ALL.svg",
     _id: "!23",
     category: "all",
   },
   {
-    imgSrc:
-      "https://weather-outfit-image.s3.amazonaws.com/6619043c4ad9ca1d71dd1528/바지.png",
+    imgSrc: "/assets/image/outer.jpg",
     _id: "!23",
     category: "outer",
   },
   {
-    imgSrc:
-      "https://weather-outfit-image.s3.amazonaws.com/6619043c4ad9ca1d71dd1528/바지.png",
+    imgSrc: "/assets/image/top.jpg",
     _id: "!23",
     category: "top",
   },
   {
-    imgSrc:
-      "https://weather-outfit-image.s3.amazonaws.com/6619043c4ad9ca1d71dd1528/바지.png",
+    imgSrc: "/assets/image/inner.jpg",
     _id: "!23",
     category: "inner",
   },
   {
-    imgSrc:
-      "https://weather-outfit-image.s3.amazonaws.com/6619043c4ad9ca1d71dd1528/바지.png",
+    imgSrc: "/assets/image/pants.jpg",
     _id: "!23",
     category: "bottom",
   },

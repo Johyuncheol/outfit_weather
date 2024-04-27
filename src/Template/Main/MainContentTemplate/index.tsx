@@ -77,7 +77,7 @@ const MainContentTemplate = () => {
     const fetch = async () => {
       if (temp) {
         try {
-          const res = await getRecommendAPI(Number(21));
+          const res = await getRecommendAPI(Number(temp));
           if (res) {
             setMainItems(res.map((item: Item) => item.mainItem));
             setRecommend(res);

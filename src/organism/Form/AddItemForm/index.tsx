@@ -8,6 +8,7 @@ import { AddClothesAPI } from "@/api/ClothesAPI";
 import { subOptions } from "./static/subOptions";
 import { options } from "./static/options";
 import { tempOptions } from "./static/tempOption";
+import { useRouter } from "next/navigation";
 
 interface ItemData {
   image: File | null;
@@ -18,6 +19,8 @@ interface ItemData {
 }
 
 const AddItemForm = () => {
+  const router = useRouter();
+
   const [ItemData, setItemData] = useState<ItemData>({
     image: null,
     name: "",
@@ -81,7 +84,11 @@ const AddItemForm = () => {
     data.append("subcategory", ItemData.subcategory);
     data.append("temp", ItemData.temp);
 
-    await AddClothesAPI({ data });
+    const res = await AddClothesAPI({ data });
+    if (res === 401) {
+      alert("로그인이 필요합니다");
+      router.push("/");
+    }
   };
 
   return (
@@ -124,7 +131,7 @@ const AddItemForm = () => {
           </>
         </InputFrame>
 
-        <InputFrame id={"temp"} label={"기온"}>
+        <InputFrame id={"temp"} label={"기온"} required>
           <SelectBox
             id="temp"
             options={tempOptions}

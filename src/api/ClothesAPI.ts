@@ -43,3 +43,19 @@ export const selectAPI = async (data: object) => {
   const response = await customFetch({ endpoint, method, data });
   return response;
 };
+
+export const deleteAPI = async (data: object) => {
+  const endpoint = `user/clothes/delete`;
+  const method = "POST";
+
+  const response = await customFetch({ endpoint, method, data });
+  return response;
+};
+
+export const updateAPI = async (data: object) => {
+  const endpoint = `user/clothes/update`;
+  const method = "PATCH";
+
+  const response = await customFetch({ endpoint, method, data });
+  return response;
+};

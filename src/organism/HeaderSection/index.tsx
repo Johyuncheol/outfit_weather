@@ -6,8 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/const";
 import { IconButton, LinkTextButton } from "@/atoms/Button";
 import { GetSessionStorage } from "@/util/HandleSessionStorage";
-import { setUser } from "@/redux/modules/user";
+import { setUser, DeleteUser } from "@/redux/modules/user";
 import { useRouter } from "next/navigation";
+import { logoutAPI } from "@/api/AuthApi";
 
 const HeaderSection = () => {
   const dispatch = useDispatch();
@@ -20,8 +21,17 @@ const HeaderSection = () => {
     setIsLoading(false);
     if (user) {
       dispatch(setUser(user));
+    } else {
+      dispatch(DeleteUser());
     }
-  }, [dispatch]);
+  }, []);
+
+  const HandleLogout = async () => {
+    const res = await logoutAPI();
+    console.log(res);
+    dispatch(DeleteUser());
+    router.push("/");
+  };
 
   return (
     <header className="fixed top-0 w-full z-[50] bg-slate-100 flex p-5 items-center justify-between min-w-[375px]">
@@ -31,13 +41,14 @@ const HeaderSection = () => {
       <div className="flex gap-4">
         {!isLoading ? (
           nickname ? (
-            <LinkTextButton
-              onClick={() => {
-                alert("마이페이지 준비 중 입니다");
-              }}
-            >
-              <Span type={"subTitle3"}>{`${nickname} 님`}</Span>
-            </LinkTextButton>
+            <>
+              <LinkTextButton onClick={() => HandleLogout()}>
+                <Span type={"subTitle3"}>{"로그아웃"}</Span>
+              </LinkTextButton>
+              <LinkTextButton onClick={() => router.push("/closet")}>
+                <Span type={"subTitle3"}>{`${nickname} 님`}</Span>
+              </LinkTextButton>
+            </>
           ) : (
             <AuthModal>
               <IconButton

@@ -6,6 +6,8 @@ import Frame from "@/molecules/Frame/ArticleFrame";
 import AtomicPagination from "@/organism/PageNation";
 import { useRouter } from "next/navigation";
 import { getClothesAPI } from "@/api/ClothesAPI";
+import ItemInfoModal from "@/organism/Modal/ItemInfo";
+import useModal from "@/hook/useModal";
 
 const CategoryItemView = () => {
   const [paginatedData, setPaginatedData] = useState<any[]>([]);
@@ -78,8 +80,17 @@ const CategoryItemView = () => {
     setItemsPerPage(Number(value));
   };
 
+  const { open, ChangeModalState } = useModal();
+  const [ModalData, setModalData] = useState<any>();
+  const HandleModal = (item: any) => {
+    setModalData(item);
+    ChangeModalState();
+  };
+
   return (
     <div>
+      {open && <ItemInfoModal data={ModalData} closeModal={ChangeModalState} />}
+
       <CategoryNav
         data={exData}
         title={"카테고리"}
@@ -93,6 +104,7 @@ const CategoryItemView = () => {
           totalPages={totalPages}
           onPageChange={onPageChange}
           data={paginatedData}
+          onClickItem={HandleModal}
         />
       </Frame>
     </div>

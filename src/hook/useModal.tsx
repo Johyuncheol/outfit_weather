@@ -6,6 +6,7 @@ const useModal = () => {
   const ChangeModalState = () => {
     setOpen(!open);
   };
+  
   return {
     open,
     ChangeModalState

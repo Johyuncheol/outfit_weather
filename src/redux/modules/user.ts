@@ -18,7 +18,7 @@ const userSlice = createSlice({
       state.nickname = actions.payload;
       AddSessionStorage("nickname", actions.payload);
     },
-    DeleteUser(state, actions) {
+    DeleteUser(state) {
       state.nickname = "";
       RemoveSessionStorage("nickname");
     },

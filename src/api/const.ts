@@ -1,3 +1,5 @@
+import { RemoveSessionStorage } from "@/util/HandleSessionStorage";
+
 interface customFetchProps {
   endpoint: string;
   method: string;
@@ -38,15 +40,19 @@ export const customFetch = async ({
     const result = await response.json();
     if (!response.ok) {
       if (response.status === 401) {
-        throw new Error("Unauthorized"); // 에러를 던져서 호출한 측에서 처리
+        RemoveSessionStorage("nickname");
+        /*  throw new Error("Unauthorized"); // 에러 */
       }
-      alert(result.message);
-      return;
+
+      /*       alert(result.message); */
+      return 401;
     }
+
+    if (options.method === "POST" || options.method === "PATCH")
+      alert(result.message);
+
     return result.data;
   } catch (error) {
-    console.log(error);
-    /*     console.error("There was a problem with the fetch operation:", error);
-     */ throw error;
+    throw error;
   }
 };

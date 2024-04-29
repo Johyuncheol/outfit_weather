@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import ItemInfo from "@/molecules/ItemInfo";
-import Carousel from "@/util/Carousel";
+import CarouselFrame from "@/molecules/Frame/CarouselFrame";
 import ImageGrid from "@/molecules/ImageGrid";
 import useModal from "@/hook/useModal";
 import DetailModal from "@/organism/Modal/DetailModal";
@@ -66,7 +66,7 @@ const ContentsSection = ({ data }: { data: Item[] }) => {
                 />
               </Frame>
               <Frame title={"코디 정보"}>
-                <Carousel slideData={data.styles}>
+                <CarouselFrame slideData={data.styles}>
                   {data.styles.map((styledItem, styledIndex) => (
                     <div
                       key={styledIndex}
@@ -75,7 +75,7 @@ const ContentsSection = ({ data }: { data: Item[] }) => {
                       <ImageGrid data={styledItem} />
                     </div>
                   ))}
-                </Carousel>
+                </CarouselFrame>
               </Frame>
             </div>
           );

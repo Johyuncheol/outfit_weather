@@ -75,20 +75,10 @@ const MainContentTemplate = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      if (temp) {
-        try {
-          const res = await getRecommendAPI(Number(temp));
-          if (res) {
-            setMainItems(res.map((item: Item) => item.mainItem));
-            setRecommend(res);
-          }
-        } catch (error: any) {
-          if (error.message === "Unauthorized") {
-            // router.push("/");
-          } else {
-            console.error("Error fetching data:", error);
-          }
-        }
+      const res = await getRecommendAPI(Number(temp));
+      if (res && res !== 401) {
+        setMainItems(res.map((item: Item) => item.mainItem));
+        setRecommend(res);
       }
     };
     fetch();

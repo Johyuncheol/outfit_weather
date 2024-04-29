@@ -7,14 +7,19 @@ const AtomicPagination: React.FC<{
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
-}> = ({ data, currentPage, totalPages, onPageChange }) => {
+  onClickItem: (data: any) => void;
+}> = ({ data, currentPage, totalPages, onPageChange, onClickItem }) => {
   console.log(data);
   return (
     <div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {data &&
           data.map((item: any, index: number) => (
-            <div key={index} className="border border-gray-300 p-4 rounded ">
+            <div
+              key={index}
+              className="border border-gray-300 p-4 rounded "
+              onClick={() => onClickItem(item)}
+            >
               <div className="relative w-full h-[15rem]">
                 <Image src={item.imgSrc} alt={item.name} fill />
               </div>

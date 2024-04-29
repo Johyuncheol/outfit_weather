@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import FigureImage from "@/atoms/FigureImage";
 import Frame from "@/molecules/Frame/ArticleFrame";
-import Carousel from "@/util/Carousel";
+import CarouselFrame from "@/molecules/Frame/CarouselFrame";
 import Span from "@/atoms/Span";
 interface ItemsCarouselProps {
   title: string;
@@ -23,15 +23,15 @@ const CategoryCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
 
   return (
     <Frame title={title} type="bold">
-      <Carousel slideData={data}>
+      <CarouselFrame slideData={data}>
         {data &&
           data.map((item, index) => {
             return (
               <div
                 key={index}
-                className={`${
-                  selectedIdx === index ? "border-2 border-black" : ""
-                }`}
+                className={`cursor-pointer ${
+                  selectedIdx === index ? "bg-slate-400" : ""
+                } `}
                 onClick={() => handleItemClick(index, item.category)}
               >
                 <FigureImage
@@ -43,7 +43,7 @@ const CategoryCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
               </div>
             );
           })}
-      </Carousel>
+      </CarouselFrame>
     </Frame>
   );
 };

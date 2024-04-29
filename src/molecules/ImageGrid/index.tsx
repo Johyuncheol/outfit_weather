@@ -25,7 +25,7 @@ interface ImageGridProps {
 
 const ImageGrid: React.FC<ImageGridProps> = ({ data }) => {
   return (
-    <div className="grid grid-cols-3 gap-[1px] min-w-[350px] p-4">
+    <div className="grid grid-cols-3 gap-[1px] min-w-[350px] p-4 cursor-pointer">
       <div className="bg-gray-200 h-[125px] relative"></div>
       <div className="bg-gray-200 h-[125px] relative">모자</div>
       <div className="bg-gray-200 h-[125px] relative">목도리</div>

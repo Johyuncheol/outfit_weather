@@ -4,19 +4,27 @@ import { SubmitButton } from "@/atoms/Button";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import { selectAPI } from "@/api/ClothesAPI";
+import { useRouter } from "next/navigation";
 
 interface DetailModalProps {
   data: Record<string, any>;
   closeModal: () => void;
 }
 const DetailModal: React.FC<DetailModalProps> = ({ data, closeModal }) => {
+  const router = useRouter();
+
   const handleSubmit = async () => {
     const newData: Record<string, any> = {};
 
     for (const key in data) {
       newData[key] = data[key]._id;
     }
-        const res= await selectAPI(newData)
+    
+    const res = await selectAPI(newData);
+    if (res === 401) {
+      alert("로그인이 필요합니다");
+      router.push("/");
+    }
   };
 
   return (

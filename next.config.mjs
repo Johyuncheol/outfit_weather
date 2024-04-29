@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    reactStrictMode: false,
     images: {
       domains: ['weather-outfit-image.s3.amazonaws.com'],
     },

@@ -5,7 +5,7 @@ interface CarouselProps {
   children: React.ReactNode;
   slideData: any[];
 }
-const Carousel: React.FC<CarouselProps> = ({ children, slideData }) => {
+const CarouselFrame: React.FC<CarouselProps> = ({ children, slideData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -44,4 +44,4 @@ const Carousel: React.FC<CarouselProps> = ({ children, slideData }) => {
   );
 };
 
-export default Carousel;
+export default CarouselFrame;

@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import FigureImage from "@/atoms/FigureImage";
 import Frame from "@/molecules/Frame/ArticleFrame";
-import Carousel from "@/util/Carousel";
+import CarouselFrame from "@/molecules/Frame/CarouselFrame";
+import Span from "@/atoms/Span";
 
 interface ItemsCarouselProps {
   title: string;
@@ -23,14 +24,14 @@ const ItemsCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
 
   return (
     <Frame title={title} type="bold">
-      <Carousel slideData={data}>
+      <CarouselFrame slideData={data}>
         {data &&
           data.map((item, index) => {
             return (
               <div
                 key={index}
-                className={`${
-                  selectedIdx === index ? "border-2 border-black" : ""
+                className={`cursor-pointer  flex flex-col items-center ${
+                  selectedIdx === index ? "bg-slate-400" : ""
                 }`}
                 onClick={() => handleItemClick(index, item._id)}
               >
@@ -39,10 +40,13 @@ const ItemsCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
                   imgSrc={item.imgSrc}
                   alt={`${item.name} 이미지`}
                 />
+                <div className="truncate w-[10rem]">
+                  <Span type={"subTitle3"}>{item.name}</Span>
+                </div>
               </div>
             );
           })}
-      </Carousel>
+      </CarouselFrame>
     </Frame>
   );
 };

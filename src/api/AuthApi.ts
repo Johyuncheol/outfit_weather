@@ -31,3 +31,12 @@ export const isloginAPI = async () => {
   const response = await customFetch({ endpoint, method });
   return response;
 };
+
+export const logoutAPI = async () => {
+  const endpoint = "auth/logout";
+  const method = "GET";
+
+  const response = await customFetch({ endpoint, method });
+  console.log(response)
+  return response;
+};

@@ -3,13 +3,15 @@ import ModalFrame from "@/molecules/Frame/ModalFrame";
 import useModal from "@/hook/useModal";
 import ItemsCarousel from "@/organism/Carousel/ItemsCarousel";
 import { SubmitButton } from "@/atoms/Button";
-import { getClothesAPI ,selectAPI } from "@/api/ClothesAPI";
+import { getClothesAPI, selectAPI } from "@/api/ClothesAPI";
+import { useRouter } from "next/navigation";
 
 interface SelectItemModalProps {
   children: React.ReactNode;
 }
 const SelectItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
   const { ChangeModalState, open } = useModal();
+  const router = useRouter();
 
   interface itemType {
     _id: string;
@@ -40,9 +42,13 @@ const SelectItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
     setItems(res);
   };
 
-  const handleSubmit=async()=>{
-    const res= await selectAPI(selectedItems)
-  }
+  const handleSubmit = async () => {
+    const res = await selectAPI(selectedItems);
+    if (res === 401) {
+      alert("로그인이 필요합니다");
+      router.push("/");
+    }
+  };
 
   useEffect(() => {
     if (open) {
@@ -79,11 +85,7 @@ const SelectItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
             data={items.bottom}
             onItemClick={handleItemClick}
           />
-          <SubmitButton
-            onClick={handleSubmit}
-          >
-            선택하기
-          </SubmitButton>
+          <SubmitButton onClick={handleSubmit}>선택하기</SubmitButton>
         </ModalFrame>
       )}
     </>

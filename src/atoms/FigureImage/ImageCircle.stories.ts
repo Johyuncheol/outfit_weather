@@ -15,28 +15,50 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Small: Story = {
+export const CircleBig: Story = {
   args: {
-    type: "small",
+    type: "circle-big",
     imgSrc: "/assets/image/spring.jpg",
     alt: "테스트이미지",
   },
 };
 
-export const Middle: Story = {
+export const CircleSmall: Story = {
   args: {
-    type: "middle",
+    type: "circle-small",
     imgSrc: "/assets/image/spring.jpg",
     alt: "테스트이미지",
   },
 };
 
-
-export const Big: Story = {
+export const Circle: Story = {
   args: {
-    type: "big",
+    type: "circle",
     imgSrc: "/assets/image/spring.jpg",
     alt: "테스트이미지",
   },
 };
 
+export const SquareSmall: Story = {
+  args: {
+    type: "Square-small",
+    imgSrc: "/assets/image/spring.jpg",
+    alt: "테스트이미지",
+  },
+};
+
+export const Square: Story = {
+  args: {
+    type: "Square",
+    imgSrc: "/assets/image/spring.jpg",
+    alt: "테스트이미지",
+  },
+};
+
+export const SquareBig: Story = {
+  args: {
+    type: "Square-big",
+    imgSrc: "/assets/image/spring.jpg",
+    alt: "테스트이미지",
+  },
+};

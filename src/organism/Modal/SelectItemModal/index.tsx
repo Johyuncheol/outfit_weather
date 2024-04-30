@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import useModal from "@/hook/useModal";
-import ItemsCarousel from "@/organism/Carousel/ItemsCarousel";
+import Carousel from "@/organism/Carousel/FigureCarousel";
 import { SubmitButton } from "@/atoms/Button";
 import { getClothesAPI, selectAPI } from "@/api/ClothesAPI";
 import { useRouter } from "next/navigation";
+import FigureImage from "@/atoms/FigureImage";
 
 interface SelectItemModalProps {
   children: React.ReactNode;
@@ -33,8 +34,8 @@ const SelectItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
 
   let selectedItems: Record<string, string> = {};
 
-  const handleItemClick = (cateogry: string, id: string) => {
-    selectedItems = { ...selectedItems, [cateogry]: id };
+  const handleItemClick = (item: itemType) => {
+    selectedItems = { ...selectedItems, [item.category]: item._id };
   };
 
   const fetchClothesData = async () => {
@@ -65,25 +66,54 @@ const SelectItemModal: React.FC<SelectItemModalProps> = ({ children }) => {
           closeModal={ChangeModalState}
           title={"클릭해서 아이템 선택"}
         >
-          <ItemsCarousel
+          <Carousel<itemType>
             title={"outer"}
             data={items.outer}
             onItemClick={handleItemClick}
+            renderFigure={(item) => (
+              <FigureImage
+                type={"circle-small"}
+                imgSrc={item.imgSrc}
+                alt={item.name}
+              />
+            )}
           />
-          <ItemsCarousel
+
+          <Carousel<itemType>
             title={"top"}
             data={items.top}
             onItemClick={handleItemClick}
+            renderFigure={(item) => (
+              <FigureImage
+                type={"circle-small"}
+                imgSrc={item.imgSrc}
+                alt={item.name}
+              />
+            )}
           />
-          <ItemsCarousel
+          <Carousel<itemType>
             title={"inner"}
             data={items.inner}
             onItemClick={handleItemClick}
+            renderFigure={(item) => (
+              <FigureImage
+                type={"circle-small"}
+                imgSrc={item.imgSrc}
+                alt={item.name}
+              />
+            )}
           />
-          <ItemsCarousel
+          <Carousel<itemType>
             title={"bottom"}
             data={items.bottom}
             onItemClick={handleItemClick}
+            renderFigure={(item) => (
+              <FigureImage
+                type={"circle-small"}
+                imgSrc={item.imgSrc}
+                alt={item.name}
+              />
+            )}
           />
           <SubmitButton onClick={handleSubmit}>선택하기</SubmitButton>
         </ModalFrame>

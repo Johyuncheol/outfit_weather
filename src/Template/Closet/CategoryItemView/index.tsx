@@ -1,5 +1,5 @@
 "use client";
-import CategoryNav from "@/organism/CarouselNav/CategoryNav";
+import CategoryCarousel from "@/organism/Carousel/FigureCarousel";
 import React, { useEffect, useState } from "react";
 import NumOfItemsNav from "../NumOfItemsNav";
 import Frame from "@/molecules/Frame/ArticleFrame";
@@ -8,6 +8,13 @@ import { useRouter } from "next/navigation";
 import { getClothesAPI } from "@/api/ClothesAPI";
 import ItemInfoModal from "@/organism/Modal/ItemInfo";
 import useModal from "@/hook/useModal";
+import FigureImage from "@/atoms/FigureImage";
+
+interface Item {
+  _id: string;
+  imgSrc: string;
+  name: string;
+}
 
 const CategoryItemView = () => {
   const [paginatedData, setPaginatedData] = useState<any[]>([]);
@@ -44,8 +51,8 @@ const CategoryItemView = () => {
     setCurrentPage(pageNumber);
   };
 
-  const handleCategory = (category: string) => {
-    setCategory(category);
+  const handleCategory = (item: Item) => {
+    setCategory(item.name);
     setCurrentPage(1);
   };
 
@@ -91,11 +98,19 @@ const CategoryItemView = () => {
     <div>
       {open && <ItemInfoModal data={ModalData} closeModal={ChangeModalState} />}
 
-      <CategoryNav
-        data={exData}
+      <CategoryCarousel<Item>
         title={"카테고리"}
         onItemClick={handleCategory}
+        data={exData}
+        renderFigure={(item) => (
+          <FigureImage
+            type={"circle-small"}
+            imgSrc={item.imgSrc}
+            alt={item.name}
+          />
+        )}
       />
+
       <NumOfItemsNav handleInputChange={handleInputChange} />
 
       <Frame title={"아이템"} type="bold">
@@ -117,26 +132,26 @@ export const exData = [
   {
     imgSrc: "/assets/image/ALL.svg",
     _id: "!23",
-    category: "all",
+    name: "all",
   },
   {
     imgSrc: "/assets/image/outer.jpg",
     _id: "!23",
-    category: "outer",
+    name: "outer",
   },
   {
     imgSrc: "/assets/image/top.jpg",
     _id: "!23",
-    category: "top",
+    name: "top",
   },
   {
     imgSrc: "/assets/image/inner.jpg",
     _id: "!23",
-    category: "inner",
+    name: "inner",
   },
   {
     imgSrc: "/assets/image/pants.jpg",
     _id: "!23",
-    category: "bottom",
+    name: "bottom",
   },
 ];

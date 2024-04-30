@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ContentsSection from "@/organism/ContentsSection";
-import ItemNav from "@/organism/CarouselNav/ItemNav";
+import Carousel from "@/organism/Carousel/FigureCarousel";
 import ReduxProvider from "@/redux/Provider";
 import { GetLocalStorage } from "@/util/HandleLocalStorage";
 import { getRecommendAPI } from "@/api/ClothesAPI";
+import FigureImage from "@/atoms/FigureImage";
 
 interface ITem {
   _id: string;
@@ -57,9 +58,9 @@ const MainContentTemplate = () => {
   const [mainItems, setMainItems] = useState<ITem[]>([]);
 
   // 특정 요소를 찾아서 이동하는 함수
-  const scrollToElement = (title: string, id: string) => {
+  const scrollToElement = (item: ITem) => {
     // 요소 가져오기
-    const element = document.getElementById(`recommend${id}`);
+    const element = document.getElementById(`recommend${item._id}`);
 
     if (element) {
       // 요소의 위치 정보 가져오기
@@ -86,7 +87,18 @@ const MainContentTemplate = () => {
 
   return (
     <ReduxProvider>
-      <ItemNav data={mainItems} onItemClick={scrollToElement} />
+      <Carousel<ITem>
+        data={mainItems}
+        onItemClick={scrollToElement}
+        title={"추천 아이템"}
+        renderFigure={(item) => (
+          <FigureImage
+            type={"circle-small"}
+            imgSrc={item.imgSrc}
+            alt={item.name}
+          />
+        )}
+      />
       <ContentsSection data={recommend} />
     </ReduxProvider>
   );

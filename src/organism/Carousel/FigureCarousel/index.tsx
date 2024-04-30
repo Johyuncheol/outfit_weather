@@ -1,25 +1,33 @@
 "use client";
 import React, { useState } from "react";
-import FigureImage from "@/atoms/FigureImage";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import CarouselFrame from "@/molecules/Frame/CarouselFrame";
 import Span from "@/atoms/Span";
 
-interface ItemsCarouselProps {
-  title: string;
-  onItemClick: (title: string, id: string) => void;
-  data: {
-    _id: string;
-    imgSrc: string;
-    name: string;
-  }[];
+interface Item {
+  _id: string;
+  imgSrc: string;
+  name: string;
 }
-const ItemsCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
+
+interface CarouselProps<T> {
+  title: string;
+  onItemClick: (item: T) => void;
+  data: T[];
+  renderFigure: (item: T) => React.ReactNode;
+}
+
+const Carousel = <T extends Item>({
+  title,
+  onItemClick,
+  data,
+  renderFigure,
+}: CarouselProps<T>) => {
   const [selectedIdx, setSelectedIdx] = useState<number>();
 
-  const handleItemClick = (index: number, _id: string) => {
+  const handleItemClick = (index: number, item: T) => {
     setSelectedIdx(index);
-    onItemClick(title, _id);
+    onItemClick(item);
   };
 
   return (
@@ -33,13 +41,9 @@ const ItemsCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
                 className={`cursor-pointer  flex flex-col items-center ${
                   selectedIdx === index ? "bg-slate-400" : ""
                 }`}
-                onClick={() => handleItemClick(index, item._id)}
+                onClick={() => handleItemClick(index, item)}
               >
-                <FigureImage
-                  type={"circle-small"}
-                  imgSrc={item.imgSrc}
-                  alt={`${item.name} 이미지`}
-                />
+                {renderFigure(item)}
                 <div className="truncate w-[10rem]">
                   <Span type={"subTitle3"}>{item.name}</Span>
                 </div>
@@ -51,4 +55,4 @@ const ItemsCarousel = ({ title, onItemClick, data }: ItemsCarouselProps) => {
   );
 };
 
-export default ItemsCarousel;
+export default Carousel;

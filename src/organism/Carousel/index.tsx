@@ -2,13 +2,6 @@
 import React, { useState } from "react";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import CarouselFrame from "@/molecules/Frame/CarouselFrame";
-import Span from "@/atoms/Span";
-
-interface Item {
-  _id: string;
-  imgSrc: string;
-  name: string;
-}
 
 interface CarouselProps<T> {
   title: string;
@@ -17,7 +10,7 @@ interface CarouselProps<T> {
   renderFigure: (item: T) => React.ReactNode;
 }
 
-const Carousel = <T extends Item>({
+const Carousel = <T extends {}>({
   title,
   onItemClick,
   data,
@@ -38,15 +31,12 @@ const Carousel = <T extends Item>({
             return (
               <div
                 key={index}
-                className={`cursor-pointer  flex flex-col items-center ${
+                className={`cursor-pointer  ${
                   selectedIdx === index ? "bg-slate-400" : ""
                 }`}
                 onClick={() => handleItemClick(index, item)}
               >
                 {renderFigure(item)}
-                <div className="truncate w-[10rem]">
-                  <Span type={"subTitle3"}>{item.name}</Span>
-                </div>
               </div>
             );
           })}

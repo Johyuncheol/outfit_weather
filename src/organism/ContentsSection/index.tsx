@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import ItemInfo from "@/molecules/ItemInfo";
-import CarouselFrame from "@/molecules/Frame/CarouselFrame";
 import ImageGrid from "@/molecules/ImageGrid";
 import useModal from "@/hook/useModal";
 import DetailModal from "@/organism/Modal/DetailModal";
+import Carousel from "../Carousel";
 
 interface Item {
   mainItem: {
@@ -43,6 +43,32 @@ interface Item {
   }[];
 }
 
+interface ItemType {
+  outer: {
+    _id: string;
+    name: string;
+    category: string;
+    imgSrc: string;
+  };
+  top: {
+    _id: string;
+    name: string;
+    category: string;
+    imgSrc: string;
+  };
+  bottom: {
+    _id: string;
+    name: string;
+    category: string;
+    imgSrc: string;
+  };
+  inner: {
+    _id: string;
+    name: string;
+    category: string;
+    imgSrc: string;
+  };
+}
 const ContentsSection = ({ data }: { data: Item[] }) => {
   const { open, ChangeModalState } = useModal();
   const [ModalData, setModalData] = useState<any>();
@@ -65,18 +91,13 @@ const ContentsSection = ({ data }: { data: Item[] }) => {
                   detail={data.mainItem.detail}
                 />
               </Frame>
-              <Frame title={"코디 정보"}>
-                <CarouselFrame slideData={data.styles}>
-                  {data.styles.map((styledItem, styledIndex) => (
-                    <div
-                      key={styledIndex}
-                      onClick={() => HandleModal(styledItem)}
-                    >
-                      <ImageGrid data={styledItem} />
-                    </div>
-                  ))}
-                </CarouselFrame>
-              </Frame>
+
+              <Carousel<ItemType>
+                title={"코디 정보"}
+                onItemClick={HandleModal}
+                data={data.styles}
+                renderFigure={(item) => <ImageGrid data={item} />}
+              />
             </div>
           );
         })}

@@ -1,5 +1,5 @@
 "use client";
-import CategoryCarousel from "@/organism/Carousel/FigureCarousel";
+import Carousel from "@/organism/Carousel";
 import React, { useEffect, useState } from "react";
 import NumOfItemsNav from "../NumOfItemsNav";
 import Frame from "@/molecules/Frame/ArticleFrame";
@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { getClothesAPI } from "@/api/ClothesAPI";
 import ItemInfoModal from "@/organism/Modal/ItemInfo";
 import useModal from "@/hook/useModal";
-import FigureImage from "@/atoms/FigureImage";
+import FigureCard from "@/molecules/FigureCard";
 
 interface Item {
   _id: string;
@@ -98,16 +98,13 @@ const CategoryItemView = () => {
     <div>
       {open && <ItemInfoModal data={ModalData} closeModal={ChangeModalState} />}
 
-      <CategoryCarousel<Item>
+      <Carousel<Item>
         title={"카테고리"}
         onItemClick={handleCategory}
         data={exData}
         renderFigure={(item) => (
-          <FigureImage
-            type={"circle-small"}
-            imgSrc={item.imgSrc}
-            alt={item.name}
-          />
+          <FigureCard type={"circle-small"} data={item} />
+
         )}
       />
 

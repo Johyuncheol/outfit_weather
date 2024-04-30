@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ContentsSection from "@/organism/ContentsSection";
-import Carousel from "@/organism/Carousel/FigureCarousel";
+import Carousel from "@/organism/Carousel";
 import ReduxProvider from "@/redux/Provider";
 import { GetLocalStorage } from "@/util/HandleLocalStorage";
 import { getRecommendAPI } from "@/api/ClothesAPI";
-import FigureImage from "@/atoms/FigureImage";
+import FigureCard from "@/molecules/FigureCard";
 
 interface ITem {
   _id: string;
@@ -92,11 +92,7 @@ const MainContentTemplate = () => {
         onItemClick={scrollToElement}
         title={"추천 아이템"}
         renderFigure={(item) => (
-          <FigureImage
-            type={"circle-small"}
-            imgSrc={item.imgSrc}
-            alt={item.name}
-          />
+          <FigureCard type={"circle-small"} data={item} />
         )}
       />
       <ContentsSection data={recommend} />

@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ContentsSection from "@/organism/ContentsSection";
-import Carousel from "@/organism/Carousel";
-import ReduxProvider from "@/redux/Provider";
+import Carousel from "@/molecules/Carousel";
 import { GetLocalStorage } from "@/util/HandleLocalStorage";
 import { getRecommendAPI } from "@/api/ClothesAPI";
 import FigureCard from "@/molecules/FigureCard";
+
+// 리덕스 필요 
 
 interface ITem {
   _id: string;
@@ -86,7 +87,7 @@ const MainContentTemplate = () => {
   }, [temp]);
 
   return (
-    <ReduxProvider>
+    <article>
       <Carousel<ITem>
         data={mainItems}
         onItemClick={scrollToElement}
@@ -96,7 +97,7 @@ const MainContentTemplate = () => {
         )}
       />
       <ContentsSection data={recommend} />
-    </ReduxProvider>
+    </article>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import useModal from "@/hook/useModal";
-import Carousel from "@/organism/Carousel";
+import Carousel from "@/molecules/Carousel";
 import { SubmitButton } from "@/atoms/Button";
 import { getClothesAPI, selectAPI } from "@/api/ClothesAPI";
 import { useRouter } from "next/navigation";

@@ -4,8 +4,8 @@ import Frame from "@/molecules/Frame/ArticleFrame";
 import ItemInfo from "@/molecules/ItemInfo";
 import ImageGrid from "@/molecules/ImageGrid";
 import useModal from "@/hook/useModal";
-import DetailModal from "@/organism/Modal/DetailModal";
-import Carousel from "../Carousel";
+import DetailModal from "@/molecules/Modal/DetailModal";
+import Carousel from "@/molecules/Carousel";
 
 interface Item {
   mainItem: {

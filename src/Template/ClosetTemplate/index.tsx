@@ -1,14 +1,16 @@
 "use client";
-import Carousel from "@/organism/Carousel";
+import Carousel from "@/molecules/Carousel";
 import React, { useEffect, useState } from "react";
-import NumOfItemsNav from "../NumOfItemsNav";
+import NumOfItemsNav from "@/molecules/NumOfItemsNav";
 import Frame from "@/molecules/Frame/ArticleFrame";
-import AtomicPagination from "@/organism/PageNation";
+import AtomicPagination from "@/molecules/PageNation";
 import { useRouter } from "next/navigation";
 import { getClothesAPI } from "@/api/ClothesAPI";
-import ItemInfoModal from "@/organism/Modal/ItemInfo";
+import ItemInfoModal from "@/molecules/Modal/ItemInfo";
 import useModal from "@/hook/useModal";
 import FigureCard from "@/molecules/FigureCard";
+import ClosetActionSection from "@/organism/ClosetActionSection.tsx";
+import { CategoryData } from "./CategoryData";
 
 interface Item {
   _id: string;
@@ -16,7 +18,8 @@ interface Item {
   name: string;
 }
 
-const CategoryItemView = () => {
+// 리덕스 필요 
+const ClosetTemplate = () => {
   const [paginatedData, setPaginatedData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -95,16 +98,19 @@ const CategoryItemView = () => {
   };
 
   return (
-    <div>
+    <article>
+      <div className="mt-[10rem]">
+        <ClosetActionSection />
+      </div>
+
       {open && <ItemInfoModal data={ModalData} closeModal={ChangeModalState} />}
 
       <Carousel<Item>
         title={"카테고리"}
         onItemClick={handleCategory}
-        data={exData}
+        data={CategoryData}
         renderFigure={(item) => (
           <FigureCard type={"circle-small"} data={item} />
-
         )}
       />
 
@@ -119,36 +125,10 @@ const CategoryItemView = () => {
           onClickItem={HandleModal}
         />
       </Frame>
-    </div>
+    </article>
   );
 };
 
-export default CategoryItemView;
+export default ClosetTemplate;
 
-export const exData = [
-  {
-    imgSrc: "/assets/image/ALL.svg",
-    _id: "!23",
-    name: "all",
-  },
-  {
-    imgSrc: "/assets/image/outer.jpg",
-    _id: "!23",
-    name: "outer",
-  },
-  {
-    imgSrc: "/assets/image/top.jpg",
-    _id: "!23",
-    name: "top",
-  },
-  {
-    imgSrc: "/assets/image/inner.jpg",
-    _id: "!23",
-    name: "inner",
-  },
-  {
-    imgSrc: "/assets/image/pants.jpg",
-    _id: "!23",
-    name: "bottom",
-  },
-];
+

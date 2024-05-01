@@ -2,14 +2,14 @@
 import React from "react";
 import WeatherSection from "@/organism/WeatherSection";
 import WeatherNavSection from "@/organism/WeatherNavSection";
-import ReduxProvider from "@/redux/Provider";
 
+// 리덕스 필요 
 const WeatherTemplate = () => {
   return (
-    <ReduxProvider>
+    <article>
       <WeatherSection />
       <WeatherNavSection />
-    </ReduxProvider>
+    </article>
   );
 };
 

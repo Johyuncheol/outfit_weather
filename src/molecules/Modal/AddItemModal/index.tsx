@@ -1,7 +1,7 @@
 import React from "react";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import useModal from "@/hook/useModal";
-import AddItemForm from "@/organism/Form/AddItemForm";
+import AddItemForm from "@/molecules/Form/AddItemForm";
 
 interface SelectItemModalProps {
   children: React.ReactNode;

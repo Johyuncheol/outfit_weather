@@ -1,9 +1,9 @@
 "use client";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import React from "react";
-import SelectItemModal from "../../../organism/Modal/SelectItemModal";
+import SelectItemModal from "@/molecules/Modal/SelectItemModal";
 import { SquareButton } from "@/atoms/Button";
-import AddItemModal from "../../../organism/Modal/AddItemModal";
+import AddItemModal from "@/molecules/Modal/AddItemModal";
 
 const ClosetActionSection = () => {
   return (

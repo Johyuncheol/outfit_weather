@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
-import LoginForm from "@/organism/Form/LoginForm";
-import RegisterForm from "@/organism/Form/RegisterForm";
+import LoginForm from "@/molecules/Form/LoginForm";
+import RegisterForm from "@/molecules/Form/RegisterForm";
 import { SubmitButton } from "@/atoms/Button";
 import useModal from "@/hook/useModal";
 

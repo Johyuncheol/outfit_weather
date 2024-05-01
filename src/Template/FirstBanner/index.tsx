@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ImageModal from "@/organism/Modal/ImageModal";
+import ImageModal from "@/molecules/Modal/ImageModal";
 
 const FirstBanner = () => {
   const images = [

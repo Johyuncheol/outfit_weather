@@ -1,18 +1,18 @@
+"use client";
 import React from "react";
-import Header from "@/Template/Layout/Header";
-import ClosetActionSection from "@/Template/Closet/ClosetActionSection.tsx";
-import CategoryItemView from "@/Template/Closet/CategoryItemView";
-import PrivateRouter from "@/Template/Layout/PrivateRouter";
+import ClosetTemplate from "@/Template/ClosetTemplate";
+import PrivateRouter from "@/organism/Layout/PrivateRouter";
+import ReduxProvider from "@/redux/Provider";
+import Header from "@/organism/Layout/Header";
 
 const Page = () => {
   return (
-    <PrivateRouter>
-      <Header />
-      <div className="mt-[10rem]">
-        <ClosetActionSection />
-        <CategoryItemView />
-      </div>
-    </PrivateRouter>
+    <ReduxProvider>
+      <PrivateRouter>
+        <Header />
+        <ClosetTemplate />
+      </PrivateRouter>
+    </ReduxProvider>
   );
 };
 

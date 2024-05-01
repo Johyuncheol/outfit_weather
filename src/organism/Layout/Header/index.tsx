@@ -1,7 +1,8 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import Span from "@/atoms/Span";
-import MapModal from "@/organism/Modal/MapModal";
-import AuthModal from "@/organism/Modal/AuthModal";
+import MapModal from "@/molecules/Modal/MapModal";
+import AuthModal from "@/molecules/Modal/AuthModal";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/const";
 import { IconButton, LinkTextButton } from "@/atoms/Button";
@@ -10,7 +11,7 @@ import { setUser, DeleteUser } from "@/redux/modules/user";
 import { useRouter } from "next/navigation";
 import { logoutAPI } from "@/api/AuthApi";
 
-const HeaderSection = () => {
+const Header = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { nickname } = useSelector((state: RootState) => state.userReducer);
@@ -71,4 +72,4 @@ const HeaderSection = () => {
   );
 };
 
-export default HeaderSection;
+export default Header;

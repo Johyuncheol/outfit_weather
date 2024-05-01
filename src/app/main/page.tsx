@@ -1,14 +1,19 @@
+"use client";
 import WeatherTemplate from "@/Template/Common/WeatherTemplate";
-import Header from "@/Template/Layout/Header";
+import Header from "@/organism/Layout/Header";
 import MainContentTemplate from "@/Template/Main/MainContentTemplate";
-import PrivateRouter from "@/Template/Layout/PrivateRouter";
+import PrivateRouter from "@/organism/Layout/PrivateRouter";
+import ReduxProvider from "@/redux/Provider";
+
 const Main = () => {
   return (
-    <PrivateRouter>
-      <Header />
-      <WeatherTemplate />
-      <MainContentTemplate />
-    </PrivateRouter>
+    <ReduxProvider>
+      <PrivateRouter>
+        <Header />
+        <WeatherTemplate />
+        <MainContentTemplate />
+      </PrivateRouter>
+    </ReduxProvider>
   );
 };
 

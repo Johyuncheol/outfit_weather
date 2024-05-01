@@ -4,7 +4,7 @@ import { SubmitButton } from "@/atoms/Button";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import { deleteAPI } from "@/api/ClothesAPI";
-import UpdateForm from "@/organism/Form/UpdateForm";
+import UpdateForm from "@/molecules/Form/UpdateForm";
 
 interface ItemInfoModalProps {
   data: Record<string, any>;

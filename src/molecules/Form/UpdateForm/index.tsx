@@ -7,12 +7,16 @@ import { updateAPI } from "@/api/ClothesAPI";
 import { subOptions } from "./static/subOptions";
 import { options } from "./static/options";
 import { tempOptions } from "./static/tempOption";
+import { useDispatch } from "react-redux";
+import { setRerender } from "@/redux/modules/reRender";
 
 interface UpdateFormProps {
   Itemdata: Record<string, any>;
 }
 
 const UpdateForm: React.FC<UpdateFormProps> = ({ Itemdata }) => {
+  const dispatch = useDispatch();
+
   const [ItemData, setItemData] = useState<Record<string, any>>({
     name: "",
     category: "",
@@ -61,6 +65,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({ Itemdata }) => {
       temp,
     };
     await updateAPI(newItemData);
+    dispatch(setRerender());
   };
 
   return (

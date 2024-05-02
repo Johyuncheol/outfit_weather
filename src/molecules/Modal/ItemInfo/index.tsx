@@ -5,16 +5,21 @@ import ModalFrame from "@/molecules/Frame/ModalFrame";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import { deleteAPI } from "@/api/ClothesAPI";
 import UpdateForm from "@/molecules/Form/UpdateForm";
+import { useDispatch } from "react-redux";
+import { setRerender } from "@/redux/modules/reRender";
 
 interface ItemInfoModalProps {
   data: Record<string, any>;
   closeModal: () => void;
 }
 const ItemInfoModal: React.FC<ItemInfoModalProps> = ({ data, closeModal }) => {
+  const dispatch = useDispatch();
+
   const [updateMode, setUpdateMode] = useState(false);
 
   const deleteItem = async (dataID: string) => {
     const res = await deleteAPI({ _id: dataID });
+    dispatch(setRerender());
   };
 
   return (

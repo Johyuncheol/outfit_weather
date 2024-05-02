@@ -9,6 +9,8 @@ import { subOptions } from "./static/subOptions";
 import { options } from "./static/options";
 import { tempOptions } from "./static/tempOption";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setRerender } from "@/redux/modules/reRender";
 
 interface ItemData {
   image: File | null;
@@ -19,6 +21,7 @@ interface ItemData {
 }
 
 const AddItemForm = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const [ItemData, setItemData] = useState<ItemData>({
@@ -89,6 +92,8 @@ const AddItemForm = () => {
       alert("로그인이 필요합니다");
       router.push("/");
     }
+
+    dispatch(setRerender());
   };
 
   return (

@@ -3,6 +3,7 @@ import addressReducer from "./modules/adress";
 import locationReducer from "./modules/location";
 import userReducer from "./modules/user";
 import tempReducer from "./modules/weather";
+import rerenderReducer from "./modules/reRender";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     locationReducer,
     userReducer,
     tempReducer,
+    rerenderReducer
   },
 });
 

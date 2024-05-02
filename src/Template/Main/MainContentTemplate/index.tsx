@@ -5,8 +5,10 @@ import Carousel from "@/molecules/Carousel";
 import { GetLocalStorage } from "@/util/HandleLocalStorage";
 import { getRecommendAPI } from "@/api/ClothesAPI";
 import FigureCard from "@/molecules/FigureCard";
+import { RootState } from "@/redux/const";
+import { useSelector } from "react-redux";
 
-// 리덕스 필요 
+// 리덕스 필요
 
 interface ITem {
   _id: string;
@@ -53,7 +55,7 @@ interface Item {
 }
 
 const MainContentTemplate = () => {
-  const temp = GetLocalStorage("temp");
+  const { temp } = useSelector((state: RootState) => state.tempReducer);
 
   const [recommend, setRecommend] = useState<Item[]>([]);
   const [mainItems, setMainItems] = useState<ITem[]>([]);

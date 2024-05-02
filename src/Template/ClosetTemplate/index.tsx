@@ -10,7 +10,9 @@ import ItemInfoModal from "@/molecules/Modal/ItemInfo";
 import useModal from "@/hook/useModal";
 import FigureCard from "@/molecules/FigureCard";
 import ClosetActionSection from "@/organism/ClosetActionSection.tsx";
-import { CategoryData } from "./CategoryData";
+import { CategoryData } from "./static/CategoryData";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/const";
 
 interface Item {
   _id: string;
@@ -18,8 +20,10 @@ interface Item {
   name: string;
 }
 
-// 리덕스 필요 
+// 리덕스 필요
 const ClosetTemplate = () => {
+  const reRender = useSelector((state: RootState) => state.rerenderReducer);
+
   const [paginatedData, setPaginatedData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +52,7 @@ const ClosetTemplate = () => {
     };
 
     fetch();
-  }, [category, router]);
+  }, [category, router, reRender]);
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -130,5 +134,3 @@ const ClosetTemplate = () => {
 };
 
 export default ClosetTemplate;
-
-

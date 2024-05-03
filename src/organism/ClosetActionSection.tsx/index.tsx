@@ -2,7 +2,7 @@
 import Frame from "@/molecules/Frame/ArticleFrame";
 import React from "react";
 import SelectItemModal from "@/molecules/Modal/SelectItemModal";
-import { SquareButton } from "@/atoms/Button";
+import SquareButton from "@/atoms/Button/SquareButton";
 import AddItemModal from "@/molecules/Modal/AddItemModal";
 
 const ClosetActionSection = () => {

@@ -1,4 +1,4 @@
-import { PageButton } from "@/atoms/Button";
+import PageButton from "@/atoms/Button/PageButton";
 
 const PaginationControls: React.FC<{
   currentPage: number;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import ValidateInput from "@/molecules/ValidateInput";
 import { InputValidate } from "@/util/InputValidate";
 import { RegisterAPI } from "@/api/AuthApi";

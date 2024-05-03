@@ -2,11 +2,11 @@ import React from "react";
 import FigureImage from "@/atoms/FigureImage";
 import Span from "@/atoms/Span";
 
-interface FigureDataType {
+export interface FigureDataType {
   imgSrc: string;
   name: string;
 }
-interface FigureCardProps<T> {
+export interface FigureCardProps<T> {
   data: T;
   type:
     | "Square-small"

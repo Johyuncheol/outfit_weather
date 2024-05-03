@@ -12,10 +12,10 @@ interface locationState {
 const storedLocation = GetLocalStorage("location");
 
 const initialState: locationState = {
-  x: storedLocation ? storedLocation.x || "" : "",
-  y: storedLocation ? storedLocation.y || "" : "",
-  latitude: storedLocation ? storedLocation.latitude || "" : "",
-  longitude: storedLocation ? storedLocation.longitude || "" : "",
+  x: storedLocation ? storedLocation.x : null,
+  y: storedLocation ? storedLocation.y : null,
+  latitude: storedLocation ? storedLocation.latitude : null,
+  longitude: storedLocation ? storedLocation.longitude : null,
 };
 
 const locationSlice = createSlice({

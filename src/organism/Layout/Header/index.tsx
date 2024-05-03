@@ -1,11 +1,12 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Span from "@/atoms/Span";
 import MapModal from "@/molecules/Modal/MapModal";
 import AuthModal from "@/molecules/Modal/AuthModal";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/const";
-import { IconButton, LinkTextButton } from "@/atoms/Button";
+import IconButton from "@/atoms/Button/IconButton";
+import LinkTextButton from "@/atoms/Button/LinkTextButton";
 import { GetSessionStorage } from "@/util/HandleSessionStorage";
 import { setUser, DeleteUser } from "@/redux/modules/user";
 import { useRouter } from "next/navigation";

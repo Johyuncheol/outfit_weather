@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import CarouselFrame from "@/molecules/Frame/CarouselFrame";
 
-interface CarouselProps<T> {
+export interface CarouselProps<T> {
   title: string;
   onItemClick: (item: T) => void;
   data: T[];

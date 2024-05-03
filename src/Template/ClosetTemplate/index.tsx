@@ -120,7 +120,7 @@ const ClosetTemplate = () => {
 
       <NumOfItemsNav handleInputChange={handleInputChange} />
 
-      <Frame title={"아이템"} type="bold">
+      <Frame title={`${category} 아이템`} type="bold">
         <AtomicPagination
           currentPage={currentPage}
           totalPages={totalPages}

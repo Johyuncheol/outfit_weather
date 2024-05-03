@@ -1,4 +1,4 @@
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import React from "react";
 
 interface ModalFrameProps {

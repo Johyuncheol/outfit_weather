@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 import Span from "./index";
 
 const meta = {
@@ -9,11 +9,10 @@ const meta = {
   },
 
   tags: ["autodocs"],
-} satisfies Meta<typeof Span>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
 export const Title: Story = {
   args: {
     type: "title",
@@ -31,6 +30,13 @@ export const SubTitle: Story = {
 export const SubTitle2: Story = {
   args: {
     type: "subTitle2",
+    children: "Button",
+  },
+};
+
+export const SubTitle3: Story = {
+  args: {
+    type: "subTitle3",
     children: "Button",
   },
 };

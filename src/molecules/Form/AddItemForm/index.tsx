@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import Image from "next/image";
 import SelectBox from "@/atoms/SelectBox";
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import ValidateInput from "@/molecules/ValidateInput";
 import InputFrame from "@/molecules/Frame/InputFrame";
 import { AddClothesAPI } from "@/api/ClothesAPI";

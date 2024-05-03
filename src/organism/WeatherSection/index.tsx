@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WeatherInfo from "@/molecules/WeatherInfo";
-import { GetWeatherInfo } from "@/util/GetWeather";
+import { GetWeatherInfo } from "@/util/GetWeatherInfo";
 import { GroupWeatherInfo } from "@/util/GroupWeatherInfo";
 import { getWeatherAPI } from "@/api/WeatherApi";
 import { GetYesterday } from "@/util/GetYesterday";
@@ -38,6 +38,7 @@ const WeatherSection = () => {
     const yesterday = GetYesterday();
     const fetchData = async () => {
       try {
+        Object.values(location).includes(null);
         const response = await getWeatherAPI({ yesterday, location });
 
         // 날짜별 그룹화

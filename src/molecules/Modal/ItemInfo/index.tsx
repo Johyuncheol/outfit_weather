@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import Frame from "@/molecules/Frame/ArticleFrame";
 import { deleteAPI } from "@/api/ClothesAPI";

@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import ValidateInput from "@/molecules/ValidateInput";
 import { InputValidate } from "@/util/InputValidate";
 import { loginAPI } from "@/api/AuthApi";

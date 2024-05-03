@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import AuthModal from "@/molecules/Modal/AuthModal";
-import { SquareButton } from "@/atoms/Button";
+import SquareButton from "@/atoms/Button/SquareButton";
 import Span from "@/atoms/Span";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";

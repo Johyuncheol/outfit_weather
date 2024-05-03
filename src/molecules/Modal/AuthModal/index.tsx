@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalFrame from "@/molecules/Frame/ModalFrame";
 import LoginForm from "@/molecules/Form/LoginForm";
 import RegisterForm from "@/molecules/Form/RegisterForm";
-import { SubmitButton } from "@/atoms/Button";
+import SubmitButton from "@/atoms/Button/SubmitButton";
 import useModal from "@/hook/useModal";
 
 interface AuthModalProps {

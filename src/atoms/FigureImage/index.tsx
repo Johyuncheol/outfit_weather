@@ -42,7 +42,7 @@ const FigureImage: React.FC<ImageCircleProps> = ({ type, imgSrc, alt }) => {
 
   return (
     <div className={`${classname} `}>
-      <Image src={imgSrc} alt={alt} fill />;
+      <Image src={imgSrc} alt={alt} fill />
     </div>
   );
 };

@@ -7,7 +7,7 @@
 
 노션: https://www.notion.so/e8e8c5788f3d4461b38cd3d6a536b92f  
 
-임시배포: https://outfit-weather-iota.vercel.app
+임시배포: https://outfit-weather.com
 
 미리보기:
 

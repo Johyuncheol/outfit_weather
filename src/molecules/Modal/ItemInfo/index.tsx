@@ -17,8 +17,8 @@ const ItemInfoModal: React.FC<ItemInfoModalProps> = ({ data, closeModal }) => {
 
   const [updateMode, setUpdateMode] = useState(false);
 
-  const deleteItem = async (dataID: string) => {
-    const res = await deleteAPI({ _id: dataID });
+  const deleteItem = async (dataID: string, name: string) => {
+    const res = await deleteAPI({ _id: dataID, name });
     dispatch(setRerender());
   };
 
@@ -52,7 +52,7 @@ const ItemInfoModal: React.FC<ItemInfoModalProps> = ({ data, closeModal }) => {
           </div>
         ) : (
           <div className="flex justify-center gap-5">
-            <SubmitButton onClick={() => deleteItem(data._id)}>
+            <SubmitButton onClick={() => deleteItem(data._id, data.name)}>
               삭제하기
             </SubmitButton>
             <SubmitButton onClick={() => setUpdateMode(true)}>

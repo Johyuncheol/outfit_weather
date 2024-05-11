@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: false,
     images: {
-      domains: ['weather-outfit-image.s3.amazonaws.com'],
+      domains: ['d3f414xmpojmxf.cloudfront.net'],
     },
   };
   

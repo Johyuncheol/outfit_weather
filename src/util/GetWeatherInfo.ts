@@ -27,7 +27,6 @@ export const GetWeatherInfo = ({ data }: any) => {
     }
   );
 
-  console.log(nowWeather)
   return {
     TodayWeather,
     TomorrowWeather,

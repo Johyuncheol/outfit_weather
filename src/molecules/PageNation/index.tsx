@@ -9,7 +9,6 @@ const AtomicPagination: React.FC<{
   onPageChange: (pageNumber: number) => void;
   onClickItem: (data: any) => void;
 }> = ({ data, currentPage, totalPages, onPageChange, onClickItem }) => {
-  console.log(data);
   return (
     <div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">

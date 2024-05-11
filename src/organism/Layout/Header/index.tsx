@@ -30,7 +30,6 @@ const Header = () => {
 
   const HandleLogout = async () => {
     const res = await logoutAPI();
-    console.log(res);
     dispatch(DeleteUser());
     router.push("/");
   };

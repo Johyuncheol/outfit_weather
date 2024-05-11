@@ -37,6 +37,5 @@ export const logoutAPI = async () => {
   const method = "GET";
 
   const response = await customFetch({ endpoint, method });
-  console.log(response)
   return response;
 };

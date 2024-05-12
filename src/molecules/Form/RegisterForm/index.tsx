@@ -110,7 +110,7 @@ const RegisterForm: React.FC = () => {
       />
 
       <ValidateInput
-        id={"nickname"}
+        id={"username"}
         label={"닉네임"}
         type={"text"}
         errorMessage={errors.username}

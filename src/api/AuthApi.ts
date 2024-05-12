@@ -16,7 +16,7 @@ export const loginAPI = async (data: LoginProps) => {
 interface RegisterProps {
   id: string;
   password: string;
-  username: string;
+  nickname: string;
 }
 export const RegisterAPI = async (data: RegisterProps) => {
   const endpoint = "auth/register";

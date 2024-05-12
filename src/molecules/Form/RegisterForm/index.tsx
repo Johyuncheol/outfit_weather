@@ -8,14 +8,14 @@ const RegisterForm: React.FC = () => {
   const [registerInput, setRegisterInput] = useState({
     id: "",
     password: "",
-    username: "",
+    nickname: "",
     passwordCheck: "",
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({
     id: "id 입력하세요. (최소 5자)",
     password: "password 입력하세요. (최소 5자)",
-    username: "nickname 입력하세요. (최소 5자)",
+    nickname: "nickname 입력하세요. (최소 5자)",
     passwordCheck: "",
   });
 
@@ -110,11 +110,11 @@ const RegisterForm: React.FC = () => {
       />
 
       <ValidateInput
-        id={"username"}
+        id={"nickname"}
         label={"닉네임"}
         type={"text"}
-        errorMessage={errors.username}
-        value={registerInput.username}
+        errorMessage={errors.nickname}
+        value={registerInput.nickname}
         required={true}
         onChange={handleChangeAndValidate}
       />

@@ -38,29 +38,16 @@ const WeatherSection = () => {
     const yesterday = GetYesterday();
     const fetchData = async () => {
       try {
-        Object.values(location).includes(null);
-        const response = await getWeatherAPI({ yesterday, location });
+        if (location.x && location.y) {
+          const response = await getWeatherAPI({ yesterday, location });
 
-        // 날짜별 그룹화
-        const GroupWeather = GroupWeatherInfo({
-          data: response.response.body.items.item,
-        });
-
-        // 구분된 날씨 정보 가져오기
-        const {
-          TodayWeather,
-          TomorrowWeather,
-          TwoDaysAfterWeather,
-          nowWeather,
-        } = GetWeatherInfo({ data: GroupWeather });
-
-        // 설정
-        setWeather({
-          TodayWeather,
-          TomorrowWeather,
-          TwoDaysAfterWeather,
-          nowWeather,
-        });
+          setWeather({
+            TodayWeather: response?.TodayWeather,
+            TomorrowWeather: response?.TodayWeather,
+            TwoDaysAfterWeather: response?.TwoDaysAfterWeather,
+            nowWeather: response?.nowWeather,
+          });
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }

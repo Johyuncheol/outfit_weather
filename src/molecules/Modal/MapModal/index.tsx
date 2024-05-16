@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "@/redux/modules/location";
 import { RootState } from "@/redux/const";
 import useModal from "@/hook/useModal";
+import { RemoveLocalStorage } from "@/util/HandleLocalStorage";
 
 interface MapModalProps {
   children: React.ReactNode;
@@ -69,6 +70,7 @@ const MapModal: React.FC<MapModalProps> = ({ children }) => {
               mouseEvent.latLng,
               function (result: any, status: any) {
                 if (status === window.kakao.maps.services.Status.OK) {
+                  RemoveLocalStorage("weatherTimeStamp")
                   dispatch(setAddress(result[0].address.address_name));
                   dispatch(
                     setLocation({
@@ -133,9 +135,16 @@ const MapModal: React.FC<MapModalProps> = ({ children }) => {
 
           window.kakao.maps.event.addListener(marker, "click", function () {
             // 클릭한 곳의 위도 경도를 적용합니다
-            setLatitude(place.x);
-            setLongitude(place.y);
+            RemoveLocalStorage("weatherTimeStamp")
             dispatch(setAddress(place.address_name));
+            setLatitude(Number(place.x));
+            setLongitude(Number(place.y));
+            dispatch(
+              setLocation({
+                latitude: Number(place.y),
+                longitude: Number(place.x),
+              })
+            );
 
             infowindow.setContent(
               '<div style="padding:5px;font-size:12px;">' +

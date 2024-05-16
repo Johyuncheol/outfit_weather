@@ -14,3 +14,11 @@ export const GetLocalStorage = (key: string) => {
   const item = localStorage.getItem(key);
   return item !== null ? JSON.parse(item) : null;
 };
+
+export const RemoveLocalStorage = (key: string) => {
+  // 서버 측에서 실행되는 경우
+  if (typeof window === "undefined") {
+    return;
+  }
+  localStorage.removeItem(key);
+};

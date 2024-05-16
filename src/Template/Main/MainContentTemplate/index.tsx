@@ -79,10 +79,12 @@ const MainContentTemplate = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await getRecommendAPI(Number(temp));
-      if (res && res !== 401) {
-        setMainItems(res.map((item: Item) => item.mainItem));
-        setRecommend(res);
+      if (temp) {
+        const res = await getRecommendAPI(Number(temp));
+        if (res && res !== 401) {
+          setMainItems(res.map((item: Item) => item.mainItem));
+          setRecommend(res);
+        }
       }
     };
     fetch();

@@ -20,11 +20,14 @@ interface Item {
   name: string;
 }
 
-// 리덕스 필요
+interface ProcessedData {
+  [key: string]: Item[][];
+}
+
 const ClosetTemplate = () => {
   const reRender = useSelector((state: RootState) => state.rerenderReducer);
 
-  const [paginatedData, setPaginatedData] = useState<any[]>([]);
+  const [categoryItemDate, setCategoryItemDate] = useState<ProcessedData>({});
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -35,6 +38,7 @@ const ClosetTemplate = () => {
 
   const router = useRouter();
 
+  // 서버로 부터 데이터를 받아오는 부분
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -52,37 +56,58 @@ const ClosetTemplate = () => {
     };
 
     fetch();
-  }, [category, router, reRender]);
+  }, [router, reRender]);
 
+  //페이지 변경 함수
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
+  //카테고리 변경함수
   const handleCategory = (item: Item) => {
     setCategory(item.name);
     setCurrentPage(1);
+
+    setTotalPages(categoryItemDate[item.name].length);
   };
 
+
+  // 받아온 데이터의 객체의 키값을 키로 설정
+  // 해당키의 값을 페이지당 아이템수로 잘라서 페이지 번호에 맞는 배열인덱스에 저장
+  // ex) {아우터:[[1페이지데이터],[2페이지데이터]]}
   useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const processedData: ProcessedData = {};
 
-    if (category === "all") {
-      const allItem = Object.values(ItemData).flat();
-      const slicedData = allItem.slice(startIndex, endIndex);
-      setTotalPages(Math.ceil(allItem?.length / itemsPerPage));
-      setPaginatedData(slicedData);
-    } else {
-      const slicedData = ItemData[category].slice(startIndex, endIndex);
-      setTotalPages(Math.ceil(ItemData[category]?.length / itemsPerPage));
-      setPaginatedData(slicedData);
+    for (let key in ItemData) {
+      if (!processedData[key]) {
+        processedData[key] = [];
+      }
+      const categoryItems = ItemData[key];
+      const processedTotalPages = Math.ceil(
+        categoryItems.length / itemsPerPage
+      );
+      setTotalPages(processedTotalPages);
+
+      for (let j = 0; j < processedTotalPages; j++) {
+        const startIndex = j * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        processedData[key].push(categoryItems.slice(startIndex, endIndex));
+      }
     }
-  }, [ItemData, category, currentPage, itemsPerPage]);
 
+    if (processedData[category]) {
+      setCategoryItemDate(processedData);
+      console.log(processedData[category][currentPage - 1]);
+    }
+  }, [ItemData, itemsPerPage]);
+
+
+  // 페이지당 아이템 수 설정시 1페이지로 초기화
   useEffect(() => {
     setCurrentPage(1);
   }, [itemsPerPage]);
 
+  // 페이지당 아이템 수 설정 함수
   const handleInputChange = ({
     event,
   }: {
@@ -94,8 +119,11 @@ const ClosetTemplate = () => {
     setItemsPerPage(Number(value));
   };
 
+  //모달 open 상태 및 상태변경함수
   const { open, ChangeModalState } = useModal();
+  //모달 내용 데이터
   const [ModalData, setModalData] = useState<any>();
+  //모달 설정 함수
   const HandleModal = (item: any) => {
     setModalData(item);
     ChangeModalState();
@@ -125,7 +153,7 @@ const ClosetTemplate = () => {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={onPageChange}
-          data={paginatedData}
+          data={categoryItemDate[category]?.[currentPage - 1] || []}
           onClickItem={HandleModal}
         />
       </Frame>
